@@ -124,3 +124,7 @@ SIDRA_SC <- SIDRA_SC[, c(
   "POPRC_F_15_49",
   "POPRC_F_50"
 )]
+
+write.csv(SIDRA_SC,
+          "SIDRA_SC.csv",
+          row.names = FALSE)
