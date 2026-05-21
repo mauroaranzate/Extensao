@@ -12,7 +12,6 @@ pop_2010_fx_uf = read.csv("população residente censo 2010 - por faixa etária 
 pop_2010_fx_mun = read.csv("população residente censo 2010 - por faixa etária e sexo -  municípios - SIDRA - tabela_1552.csv",
                         sep = ";")
 
-#Tarefa 2#
 
 POPRE_T <- pop_estimada_2015[, c("CODMUNRES", "POPRE_T")]
 
@@ -128,3 +127,44 @@ SIDRA_SC <- SIDRA_SC[, c(
 write.csv(SIDRA_SC,
           "SIDRA_SC.csv",
           row.names = FALSE)
+
+#Tarefa 2#
+
+agua_esgoto = read.csv2(
+  "agua e esgoto - município - 2015.csv",
+  stringsAsFactors = FALSE
+)
+
+dim(agua_esgoto)
+
+str(agua_esgoto)
+
+head(agua_esgoto)
+
+SINISA_SC <- agua_esgoto[
+  substr(agua_esgoto$CODMUNRES, 1, 2) == "42",
+]
+
+SINISA_SC <- SINISA_SC[, c(
+  "CODMUNRES",
+  "POPR_RA",
+  "POPR_RE"
+)]
+
+SINISA_SC$ANO <- 2015
+
+SINISA_SC$NIVEL <- "MUNICIPIO"
+
+SINISA_SC <- SINISA_SC[, c(
+  "ANO",
+  "NIVEL",
+  "CODMUNRES",
+  "POPR_RA",
+  "POPR_RE"
+)]
+
+write.csv(
+  SINISA_SC,
+  "SINISA_SC.csv",
+  row.names = FALSE
+)
