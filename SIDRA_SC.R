@@ -168,3 +168,76 @@ write.csv(
   "SINISA_SC.csv",
   row.names = FALSE
 )
+
+#TAREFA 3#
+
+cod_mun = read.csv2(
+  "códigos dos municípios - 2010.csv",
+  stringsAsFactors = FALSE
+)
+
+idhm_uf = read.csv2(
+  "IDHM - 2010 (CENSO) e 2015 (PNAD) - total e por sexo - UF - Atlas Brasil.csv",
+  stringsAsFactors = FALSE
+)
+
+idhm_mun = read.csv2(
+  "IDHM - 2010 - municípios - Atlas Brasil.csv",
+  stringsAsFactors = FALSE
+)
+
+
+cod_sc = cod_mun[
+  substr(cod_mun$CODMUNRES,1,2) == "42",
+]
+
+idhm_mun_sc = idhm_mun[
+  grepl("\\(SC\\)", idhm_mun$município),
+]
+
+
+idhm_uf_sc = idhm_uf[
+  idhm_uf$UF == "Santa Catarina",
+]
+
+ATLAS_SC = data.frame(
+  CODMUNRES = cod_sc$CODMUNRES,
+  IDHM_A = idhm_mun_sc$IDHM_2010,
+  IDHM_CA = idhm_mun_sc$IDHM_2010,
+  IDHM_CA_M = NA,
+  IDHM_CA_F = NA
+)
+
+linha_uf = data.frame(
+  CODMUNRES = "42",
+  IDHM_A = idhm_uf_sc$IDHM_2015,
+  IDHM_CA = idhm_uf_sc$IDHM_2015,
+  IDHM_CA_M = idhm_uf_sc$IDHM_2015_M,
+  IDHM_CA_F = idhm_uf_sc$IDHM_2015_F
+)
+
+ATLAS_SC <- rbind(linha_uf, ATLAS_SC)
+
+ATLAS_SC$ANO <- 2015
+
+ATLAS_SC$NIVEL <- ifelse(
+  ATLAS_SC$CODMUNRES == "42",
+  "UF",
+  "MUNICIPIO"
+)
+
+ATLAS_SC <- ATLAS_SC[, c(
+  "ANO",
+  "NIVEL",
+  "CODMUNRES",
+  "IDHM_A",
+  "IDHM_CA",
+  "IDHM_CA_M",
+  "IDHM_CA_F"
+)]
+
+write.csv(
+  ATLAS_SC,
+  "ATLAS_SC.csv",
+  row.names = FALSE
+)
