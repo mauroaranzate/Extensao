@@ -199,45 +199,29 @@
 # Exporte o arquivo em formato CSV
 # Faça o commit com a mensagem "Script e dados TAREFA 3 - SIDRA"
 
-# Tarefa 2: Acesso aos bancos de dados do SINISA e obtenção da informação
-# Escreva os comandos da Tarefa 2 estando na branch OUTROS# Leia o arquivo agua e esgoto - município - 2015.csv 
-# A partir do arquivo acima gere o banco de dados de nome SINISA_UF com as seguintes variáveis:
-# 1  ANO    
-# 2  NIVEL
-# 3  CODMUNRES
-# 4 POPR_RA
-# 5 POPR_RE
+
+
+################################################################
+# ETAPA 4: GERAR BANCO DE DADOS FINAL DO ESTADO COM DADOS DO SIDRA, ATLAS, SINASC, SIM, SINISA E INDICADORES
+################################################################
+
+
+# Tarefa 1: Fazer o merge dos bancos de dados criados nas etapas anteriores (SIDRA_UF, ATLAS_ UF,  SINASC_UF, SIM_UF e SINISA_UF), 
+# sendo que as variáveis deverão seguir a ordem
+
+# ANO, NIVEL, CODMUNRES (uma única vez), variáveis do SIDRA, do ATLAS, do SINASC, do SIM e da SINISA. No merge deve constar qualquer município que esteja em pelo menos um dos bancos
+# Chamar o banco de dados de DA_UF
+
+# Após o merge dos bancos, fazer commit “Script e dados agregados da UF”
+
+
+# Tarefa 2: Acrescentar no banco DA_UF os indicadores TFG, TMG, RMM, TMM, TMM_P, TMN, TMN_P, TMN_T e TMI e chamar o banco de BDEM_UF_2015
+
+# Após a criação do banco, fazer commit “Script e dados BDEM_UF_2015”
 
 # Exporte o arquivo em formato CSV
-# Faça o commit com a mensagem "Script e dados TAREFA 3 - SINISA"
-
-
-# Tarefa 3: Acesso aos bancos de dados do ATLAS  e obtenção da informação
-# Escreva os comandos da Tarefa 3 estando na branch OUTROS
-# Leia os arquivos:
-# 1. códigos dos municípios - 2010.csv      
-# 2. IDHM - 2010 (CENSO) e 2015 (PNAD) - total e por sexo - UF - Atlas Brasil.csv
-# 3. IDHM - 2010 - municípios - Atlas Brasil.csv
-# A partir do arquivo acima gere o banco de dados de nome ATLAS_UF com as seguintes variáveis:
-# 1  ANO    
-# 2  NIVEL
-# 3  CODMUNRES
-# 4 IDHM_A
-# 5 IDHM_CA
-# 6 IDHM_CA_M
-# 7 IDHM_CA_F
-
-# Exporte o arquivo em formato CSV# Faça o commit com a mensagem "Script e dados TAREFA 3 - ATLAS"
+# Faça o commit com a mensagem "Script e dados BDEM"
 *****************************************************************************************************
-
-
-#####################################################################################################
-# ETAPA 4: GERAR BANCO DE DADOS FINAL DO ESTADO, BASEADO NAS ANÁLISES DE SINASC, SIM, IBGE, SNIS,...
-######################################################################################################
-# Só inicie esta Etapa quando a professora orientar
-# ESTANDO NA BRANCH SINASC, NÃO ALTERE NADA NO SCRIPT REFERENTE A ETAPA 4
-
-# Cada aluno gerar um dataframe de uma única linha (referente ao seu estado) com as variáveis na ordem indicada pela professora
 
 
 
@@ -249,4 +233,5 @@
 
 # 1. Enviar arquivos para as pastas do repositório da Professora no GitHUb
 # 2. A professora fará o empilhamentos dos dataframes
+
 
